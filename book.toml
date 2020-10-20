@@ -14,8 +14,9 @@ edition = "2018"
 build-dir = "book"
 create-missing = false
 
-#[preprocessor.toc]
-#command = "mdbook-toc"
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
 
 #[preprocessor.mermaid]
 #command = "mdbook-mermaid"

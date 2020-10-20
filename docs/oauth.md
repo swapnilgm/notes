@@ -1,5 +1,7 @@
 # OAuth 2.0
 
+<!-- toc -->
+
 ## Abstract
 > The OAuth 2.0 authorization framework enables a third-party
    application to obtain limited access to an HTTP service, either on

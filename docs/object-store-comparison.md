@@ -1,6 +1,6 @@
 # Cloud based object store comparison
-
-## Limits
+<!-- toc -->
+## Limitations comparison table
 
 |Resource | AWS|ABS|Swift| GCS|Alicloud|
 |-|-|-|-|-|-|
@@ -40,7 +40,7 @@
 | Max number of stored access policies per blob container                                                      | 5                                                         |
 | Target throughput for single blob                                                                            | Up to 60 MiB per second, or up to 500 requests per second |
 
-### AWS S3
+## AWS S3
 
 |Item|	Specification|
 |-|-|
@@ -52,7 +52,7 @@
 |Maximum number of multipart uploads returned in a list multipart uploads request|	1000|
 
 
-### References
+## References
 1. GCS: <https://cloud.google.com/storage/quotas>
 1. AWS: <https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html>
 1. Azure ABS: <https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json>
