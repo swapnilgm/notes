@@ -30,7 +30,7 @@ jobs:
 
       - name: Deploy docs
         run: |
-          ./mdbook build docs
+          ./mdbook build .
           git fetch origin gh-pages
           git worktree add /tmp/book gh-pages
           rm -rf /tmp/book/*
