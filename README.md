@@ -1,6 +1,6 @@
 # Notes
 
-![Docs](https://github.com/swapnilgm/notes/workflows/Docs/badge.svg)
+[![Docs](https://github.com/swapnilgm/notes/workflows/Docs/badge.svg)](https://github.com/swapnilgm/notes/actions?query=workflow%3ADocs)
 
 General notes about things I learn daily. 
 
