@@ -2,7 +2,7 @@ name: Docs
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - "docs/**"
 
@@ -25,7 +25,7 @@ jobs:
       - name: Install mdbook
         run: |
           arch=$(uname -m)
-          version=v0.4.0
+          version=v0.4.3
           curl -LsSf https://github.com/rust-lang/mdBook/releases/download/${version}/mdbook-${version}-${arch}-unknown-linux-gnu.tar.gz | tar -xz
 
       - name: Deploy docs
@@ -34,13 +34,13 @@ jobs:
           git fetch origin gh-pages
           git worktree add /tmp/book gh-pages
           rm -rf /tmp/book/*
-          cp -rp docs/book/* /tmp/book/
+          cp -rp book/* /tmp/book/
           cd /tmp/book
           if [[ ! -z $(git status --porcelain) ]]; then
-          git add -A
-          git config --local user.email "noreply@github.com"
-          git config --local user.name "${{ github.actor }}"
-            git commit -m ":pencil: Deployed ${{ github.sha }} to gh-pages"
+            git add -A
+            git config --local user.email "noreply@github.com"
+            git config --local user.name "${{ github.actor }}"
+            git commit -m ":rocket: Deployed ${{ github.sha }} to gh-pages"
             git push origin gh-pages
           fi
           git worktree remove /tmp/book
