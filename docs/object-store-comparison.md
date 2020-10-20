@@ -1,4 +1,4 @@
-# Cloud object store comparison
+# Cloud based object store comparison
 
 ## Limits
 
