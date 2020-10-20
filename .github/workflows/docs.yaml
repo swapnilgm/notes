@@ -1,0 +1,46 @@
+name: Docs
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "docs/**"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: deploy
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            mdbook
+          key: ${{ runner.os }}-mdbook
+      - name: Install mdbook
+        run: |
+          arch=$(uname -m)
+          version=v0.4.0
+          curl -LsSf https://github.com/rust-lang/mdBook/releases/download/${version}/mdbook-${version}-${arch}-unknown-linux-gnu.tar.gz | tar -xz
+
+      - name: Deploy docs
+        run: |
+          ./mdbook build docs
+          git fetch origin gh-pages
+          git worktree add /tmp/book gh-pages
+          rm -rf /tmp/book/*
+          cp -rp docs/book/* /tmp/book/
+          cd /tmp/book
+          if [[ ! -z $(git status --porcelain) ]]; then
+          git add -A
+          git config --local user.email "noreply@github.com"
+          git config --local user.name "${{ github.actor }}"
+            git commit -m ":pencil: Deployed ${{ github.sha }} to gh-pages"
+            git push origin gh-pages
+          fi
+          git worktree remove /tmp/book
