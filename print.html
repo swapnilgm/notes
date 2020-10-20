@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,6 +172,7 @@
 <p>Notes need not explain complete topic as whole but those are basically collection of facts I need to know when I refer to the title topic. At some places I have collected my unserstanding of the topic or new learnig in that area. Or some rare facts I had understood about the topic though my experience which might not be required in minimum knowledge of that topic. At some place, it have some content copied as it is from the refences as listed in end of documents. </p>
 <p>It might be just collection of references in some documentation as I felt that those references are so precise that you might not need to browse something other than that.</p>
 <h1><a class="header" href="#oauth-20" id="oauth-20">OAuth 2.0</a></h1>
+<!-- toc -->
 <h2><a class="header" href="#abstract" id="abstract">Abstract</a></h2>
 <blockquote>
 <p>The OAuth 2.0 authorization framework enables a third-party
@@ -378,7 +379,8 @@ graph LR
 <p>https://tools.ietf.org/html/rfc6749 &quot;RFC 6749&quot;</p>
 </div>
 <h1><a class="header" href="#cloud-based-object-store-comparison" id="cloud-based-object-store-comparison">Cloud based object store comparison</a></h1>
-<h2><a class="header" href="#limits" id="limits">Limits</a></h2>
+<!-- toc -->
+<h2><a class="header" href="#limitations-comparison-table" id="limitations-comparison-table">Limitations comparison table</a></h2>
 <table><thead><tr><th>Resource</th><th>AWS</th><th>ABS</th><th>Swift</th><th>GCS</th><th>Alicloud</th></tr></thead><tbody>
 <tr><td>bucket name length</td><td>3-63 char</td><td>resourcegrp 1-90char, storage-account 3-24char, container 3-63char</td><td>256 bytes</td><td>3-64 char, no goole prefix or mispell</td><td>3-63  char</td></tr>
 <tr><td>object name</td><td>unlimited</td><td>1-1024</td><td>1024 bytes</td><td>1024</td><td>1023</td></tr>
@@ -413,7 +415,7 @@ graph LR
 <tr><td>Max number of stored access policies per blob container</td><td>5</td></tr>
 <tr><td>Target throughput for single blob</td><td>Up to 60 MiB per second, or up to 500 requests per second</td></tr>
 </tbody></table>
-<h3><a class="header" href="#aws-s3" id="aws-s3">AWS S3</a></h3>
+<h2><a class="header" href="#aws-s3" id="aws-s3">AWS S3</a></h2>
 <table><thead><tr><th>Item</th><th>Specification</th></tr></thead><tbody>
 <tr><td>Maximum object size</td><td>5 TB</td></tr>
 <tr><td>Maximum number of parts per upload</td><td>10,000</td></tr>
@@ -422,7 +424,7 @@ graph LR
 <tr><td>Maximum number of parts returned for a list parts request</td><td>1000</td></tr>
 <tr><td>Maximum number of multipart uploads returned in a list multipart uploads request</td><td>1000</td></tr>
 </tbody></table>
-<h3><a class="header" href="#references" id="references">References</a></h3>
+<h2><a class="header" href="#references" id="references">References</a></h2>
 <ol>
 <li>GCS: <a href="https://cloud.google.com/storage/quotas">https://cloud.google.com/storage/quotas</a></li>
 <li>AWS: <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html</a></li>
@@ -430,6 +432,83 @@ graph LR
 <li>Openstack Swift: <a href="https://docs.openstack.org/mitaka/config-reference/object-storage/features.html">https://docs.openstack.org/mitaka/config-reference/object-storage/features.html</a></li>
 <li>Alicloud OSS https://www.alibabacloud.com/help/doc-detail/54464.htm?spm=a2c63.p38356.b99.6.5f627d91oCAUf5</li>
 </ol>
+<h1><a class="header" href="#cloud-based-volume-resizing" id="cloud-based-volume-resizing">Cloud based volume resizing</a></h1>
+<!-- toc -->
+<h2><a class="header" href="#abstract-1" id="abstract-1">Abstract</a></h2>
+<p>This documents captures the volume i.e. disk storage resizing feature on major cloud providers</p>
+<table><thead><tr><th></th><th>AWS-EBS</th><th>GCE-PD</th><th>Azure disks</th><th>Cinder</th><th>Alicloud</th></tr></thead><tbody>
+<tr><td>Resize supported from IaaS</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td></tr>
+<tr><td>Resize supported on k8s</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>?</td></tr>
+<tr><td>Volume resize while attached to running instance</td><td>yes</td><td>yes</td><td>?</td><td>No</td><td>No</td></tr>
+</tbody></table>
+<h2><a class="header" href="#aws-ebs" id="aws-ebs">AWS-EBS</a></h2>
+<p>You can increase the volume size, change the volume type, or adjust the performance of your EBS volumes. <strong>If your instance supports Elastic Volumes, you can do so without detaching the volume or restarting the instance.</strong> This allows you to continue using your application while changes take effect.</p>
+<h3><a class="header" href="#elastic-volumes-are-supported-on-the-following-instances" id="elastic-volumes-are-supported-on-the-following-instances">Elastic Volumes are supported on the following instances:</a></h3>
+<ul>
+<li>All <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#current-gen-instances">current-generation</a> instances</li>
+<li>Previous-generation instance families C1, C3, CC2, CR1, G2, I2, M1, M3, and R3</li>
+</ul>
+<h3><a class="header" href="#monitoring" id="monitoring">Monitoring</a></h3>
+<ul>
+<li>When you modify an EBS volume, it goes through a sequence of states. The volume enters the modifying state, the optimizing state, and finally the completed state. At this point, the volume is ready to be further modified.</li>
+<li>Volume modification changes take effect as follows:
+<ul>
+<li>
+<p>Size changes usually take a few seconds to complete and take effect after a volume is in the Optimizing state.</p>
+</li>
+<li>
+<p>Performance (IOPS) changes can take from a few minutes to a few hours to complete and are dependent on the configuration change being made.</p>
+</li>
+<li>
+<p>It may take up to 24 hours for a new configuration to take effect, and in some cases more, such as when the volume has not been fully initialized. Typically, a fully used 1-TiB volume takes about 6 hours to migrate to a new performance configuration.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#limitation" id="limitation">Limitation</a></h3>
+<ul>
+<li>After provisioning over 32,000 IOPS on an existing io1 volume, you may need to do one of the following to see the full performance improvements:
+<ul>
+<li>Detach and attach the volume.</li>
+<li>Restart the instance.</li>
+</ul>
+</li>
+<li>Decreasing the size of an EBS volume is not supported. However, you can create a smaller volume and then migrate your data to it using an application-level tool such as rsync.</li>
+<li>:warning: While m3.medium instances fully support volume modification, m3.large, m3.xlarge, and m3.2xlarge instances might not support all volume modification features.</li>
+</ul>
+<h2><a class="header" href="#gce-pd" id="gce-pd">GCE-PD</a></h2>
+<ul>
+<li>You can resize disks at any time, regardless of whether the disk is attached to a running instance.</li>
+<li>After you resize your zonal persistent disk, you must configure the file system on the disk to use the additional disk space.</li>
+</ul>
+<h2><a class="header" href="#azure-disk" id="azure-disk">Azure disk</a></h2>
+<ul>
+<li>The new size should be greater than the existing disk size.</li>
+</ul>
+<h2><a class="header" href="#kubernetes-volume-resize" id="kubernetes-volume-resize">Kubernetes volume resize</a></h2>
+<ul>
+<li>Beta since kubernetes 1.11</li>
+<li>Edit the storage size in <code>PersitentVolumeClaim</code>.</li>
+<li>Required enabling the feature gate, <code>ExpandPersistentVolumes</code>, as well as the admission controller, <code>PersistentVolumeClaimResize</code>. By default enabled in 1.11+.</li>
+<li>Current support from AWS-EBS, GCE-PD, Azure Disk, Azure File, Glusterfs, Cinder, Portworx, and Ceph RBD.</li>
+<li>Enbale it by setting <code>allowVolumeExpansion</code> field to <code>true</code> in PVC configured StorageClass object.</li>
+<li>Block storage volume types such as GCE-PD, AWS-EBS, Azure Disk, Cinder, and Ceph RBD typically require a <strong>file system expansion</strong> before the additional space of an expanded volume is usable by pods. Kubernetes takes care of this automatically whenever the <strong>pod(s) referencing your volume are restarted</strong>.</li>
+<li>Post volume resize, if the <code>PersistentVolumeClaim</code> has the status <code>FileSystemResizePending</code>, it is safe to recreate the pod using the <code>PersistentVolumeClaim</code>.</li>
+</ul>
+<h2><a class="header" href="#alicloud" id="alicloud">Alicloud</a></h2>
+<ul>
+<li>Resize the data disks that are attached to an instance only when the instance is in the Running or Stopped status.</li>
+<li>You must restart the instance in the ECS console to apply the changes. This action causes your instance to stop working and may cause your business to be interrupted, so please proceed with caution.</li>
+</ul>
+<h2><a class="header" href="#references-1" id="references-1">References</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html">AWS volumes modification</a></li>
+<li><a href="https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd">GCE resize persistent disks</a></li>
+<li><a href="https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/expand-os-disk">Expand azure disk</a></li>
+<li><a href="https://docs.openstack.org/cinder/latest/cli/cli-manage-volumes.html#resize-a-volume">Resize cinder volume</a></li>
+<li><a href="https://www.alibabacloud.com/help/doc-detail/25452.htm?spm=a2c63.p38356.879954.8.78ae534bhdbtGJ#concept-z11-xsh-ydb">Resize alicloud data disks</a></li>
+<li><a href="https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/">Kubernetes persistent volume resizing</a></li>
+</ul>
 
                     </main>
 
