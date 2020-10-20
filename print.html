@@ -47,9 +47,6 @@
         
 
         
-        <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -100,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,7 +167,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#oauth-20" id="oauth-20">OAuth 2.0</a></h1>
+                        <h1><a class="header" href="#about" id="about">About</a></h1>
+<p>General notes about things I learn daily. </p>
+<p>Notes need not explain complete topic as whole but those are basically collection of facts I need to know when I refer to the title topic. At some places I have collected my unserstanding of the topic or new learnig in that area. Or some rare facts I had understood about the topic though my experience which might not be required in minimum knowledge of that topic. At some place, it have some content copied as it is from the refences as listed in end of documents. </p>
+<p>It might be just collection of references in some documentation as I felt that those references are so precise that you might not need to browse something other than that.</p>
+<h1><a class="header" href="#oauth-20" id="oauth-20">OAuth 2.0</a></h1>
 <h2><a class="header" href="#abstract" id="abstract">Abstract</a></h2>
 <blockquote>
 <p>The OAuth 2.0 authorization framework enables a third-party
@@ -486,9 +487,7 @@ graph LR
         
         <script type="text/javascript">
         window.addEventListener('load', function() {
-            MathJax.Hub.Register.StartupHook('End', function() {
-                window.setTimeout(window.print, 100);
-            });
+            window.setTimeout(window.print, 100);
         });
         </script>
         

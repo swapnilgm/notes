@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>OAuth 2.0 - Notebook</title>
+        <title>Introduction - Notebook</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html" class="active"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,225 +165,19 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#oauth-20" id="oauth-20">OAuth 2.0</a></h1>
-<h2><a class="header" href="#abstract" id="abstract">Abstract</a></h2>
-<blockquote>
-<p>The OAuth 2.0 authorization framework enables a third-party
-application to obtain limited access to an HTTP service, either on
-behalf of a resource owner by orchestrating an approval interaction
-between the resource owner and the HTTP service, or by allowing the
-third-party application to obtain access on its own behalf<sup class="footnote-reference"><a href="#1">1</a></sup>. </p>
-</blockquote>
-<ul>
-<li>Authorize third party client application on behalf of user using external autherization server</li>
-</ul>
-<h2><a class="header" href="#identity-use-case" id="identity-use-case">Identity Use case</a></h2>
-<ol>
-<li>Simple login</li>
-<li>Single-sign on across multiple sites</li>
-<li>Mobile app login</li>
-<li>Delegated authorization </li>
-</ol>
-<h2><a class="header" href="#motivation" id="motivation">Motivation</a></h2>
-<ul>
-<li>In old client-server model, third party tool needs to store and manage the resource owner credentials. </li>
-<li>Third party application used to get full access.</li>
-<li>Risk of compramising credentials on third party application.</li>
-<li>No way to revoke the access</li>
-<li>OAuth addressess these issues</li>
-</ul>
-<h2><a class="header" href="#oauth" id="oauth">OAuth</a></h2>
-<ul>
-<li>Introduction of authorization layer</li>
-<li>Role based seggregation of third aprty application/client and Resource owner</li>
-</ul>
-<blockquote>
-<p>Instead of using the resource owner's credentials to access protected
-resources, the client obtains an access token -- a string denoting a
-specific scope, lifetime, and other access attributes.  Access tokens
-are issued to third-party clients by an authorization server with the
-approval of the resource owner.  The client uses the access token to
-access the protected resources hosted by the resource server<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
-</blockquote>
-<blockquote>
-<p>For example, an end-user (resource owner) can grant a printing
-service (client) access to her protected photos stored at a photo-
-sharing service (resource server), without sharing her username and
-password with the printing service.  Instead, she authenticates
-directly with a server trusted by the photo-sharing service
-(authorization server), which issues the printing service delegation-
-specific credentials (access token).</p>
-</blockquote>
-<h2><a class="header" href="#high-level-diagram" id="high-level-diagram">High Level Diagram</a></h2>
-<pre><code class="language-mermaid">graph TD
-    subgraph app[&quot;fas:fa-server Application server&quot;]
-     app.authServer[&quot;Authorization Server&quot;] 
-     app.resourceServer[&quot;Resource server&lt;br&gt;(can be same as authorization server)&quot;]
-    end
-    subgraph client [&quot;Client&quot;]
-        client.UI[&quot;Client UI&quot;]
-        client.backend[&quot;Client application backend&quot;]
-    end
-    client.UI --&gt;|&quot;1. authorization request &lt;br&gt;with scope &lt;br&gt; redirect URI to client server&quot;| app.authServer
-    app.authServer --&gt;|2. ask user to grant| owner[&quot;fa:fa-user Resource Owner&quot;]
-    owner --&gt;|&quot;3. authorization code for grant&quot;| client.backend
-    client.backend -.-&gt;|4. request access token&lt;br&gt;w.r.t authorization code| app.authServer
-    app.authServer -.-&gt;|access token| client.backend
-    client.backend -.-&gt;|do resource operaiton with access token| app.resourceServer
-</code></pre>
-<h2><a class="header" href="#terminology" id="terminology">Terminology</a></h2>
-<ul>
-<li>
-<p>Resource Owner</p>
-<ul>
-<li>User who owns the data</li>
-</ul>
-</li>
-<li>
-<p>Client</p>
-<ul>
-<li>Client or third party application who wants to access user data on bahalf of user</li>
-</ul>
-</li>
-<li>
-<p>Authorization Server</p>
-<ul>
-<li>Main component who stores the authorizaiton details. And generates the access token and all.</li>
-</ul>
-</li>
-<li>
-<p>Resource Server</p>
-<ul>
-<li>Server which holds and serves the data</li>
-</ul>
-</li>
-<li>
-<p>Authorization Grant</p>
-<ul>
-<li>Set of permissions allowed by rsource owner to access the resource</li>
-<li>Types:
-<ul>
-<li>authorization code</li>
-<li>implicit (direct access token for browser based application)</li>
-<li>resource owner credentials
-<ul>
-<li>one time use of credentials</li>
-<li>implicit acess token generation</li>
-</ul>
-</li>
-<li>client credentials
-<ul>
-<li>credentials on behalf of client</li>
-<li>highrarchical structure</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Redirect URI</p>
-<ul>
-<li>callback URI of client provided to authorization server</li>
-</ul>
-</li>
-<li>
-<p>Scope</p>
-<ul>
-<li>Atomic unit of Policies or permissions over data</li>
-</ul>
-</li>
-<li>
-<p>Access Token</p>
-<ul>
-<li>key used by client post authorization to access data</li>
-<li>has the scope information</li>
-<li>valid for short period</li>
-</ul>
-</li>
-<li>
-<p>Refresh token</p>
-<ul>
-<li>credential used to obtain access token on expiry</li>
-<li>valid for longer period</li>
-<li>can be used to request additional scope</li>
-</ul>
-<pre><code class="language-mermaid">sequenceDiagram
-    participant client
-    participant authServer as &quot;Authorization Server&quot;
-    participant resourceServer as &quot;Resource server&quot;
-    client -&gt;&gt; authServer:&quot;Authorization grant&quot;
-    activate authServer
-    authServer -&gt;&gt;client:&quot;Access token &amp; refresh token&quot;
-    deactivate authServer
-    loop Application lifetime or till refresh token is valid 
-        loop &quot;Till access token is valid&quot;
-            client -&gt;&gt; resourceServer: Access token
-            resourceServer -&gt;&gt; client: Protected resource
-
-            client -&gt;&gt; resourceServer: Access token
-            resourceServer -&gt;&gt; client: Invalid token
-        end
-        client -&gt;&gt; authServer: refresh token
-        authServer -&gt;&gt; client: access token &amp; refresh token
-    end
-</code></pre>
-</li>
-<li>
-<p>front channel</p>
-<ul>
-<li>Unsecure, over the internet</li>
-<li>Visible query parramentes in browser etc.</li>
-<li>Over-the-shoulder security breach</li>
-</ul>
-</li>
-<li>
-<p>back channel</p>
-<ul>
-<li>secure, backend server-to-server communication channel</li>
-<li>shown with dotted lines in above diagram.</li>
-</ul>
-</li>
-</ul>
-<h2><a class="header" href="#openid-connect" id="openid-connect">OpenID Connect</a></h2>
-<ul>
-<li>
-<p>In a sense in authentication protocol extension to OAuth 2.0</p>
-</li>
-<li>
-<p>Out of the identity use cases mentioned above, first three comes under <strong>Authentication</strong> domain and only last one is real use case talking about <strong>authorization</strong>.</p>
-</li>
-<li>
-<p>OAuth protocal was mainly desinged considering authorization use case.</p>
-</li>
-<li>
-<p>There is no way to get user info in OAuth 2.0, hence its not suitable for completed authentication.</p>
-</li>
-<li>
-<p>Adds ID token </p>
-</li>
-</ul>
-<pre><code class="language-mermaid">
-graph LR
-    client.server[&quot;Client Backend&quot;] --&gt;|/userinfo| app.authServer[&quot;Applicaiton authorization server&quot;]
-
-</code></pre>
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>https://tools.ietf.org/html/rfc6749 &quot;RFC 6749&quot;</p>
-</div>
+                        <h1><a class="header" href="#about" id="about">About</a></h1>
+<p>General notes about things I learn daily. </p>
+<p>Notes need not explain complete topic as whole but those are basically collection of facts I need to know when I refer to the title topic. At some places I have collected my unserstanding of the topic or new learnig in that area. Or some rare facts I had understood about the topic though my experience which might not be required in minimum knowledge of that topic. At some place, it have some content copied as it is from the refences as listed in end of documents. </p>
+<p>It might be just collection of references in some documentation as I felt that those references are so precise that you might not need to browse something other than that.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        
 
                         
-                            <a rel="next" href="object-store-comparison.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="oauth.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -395,13 +189,9 @@ graph LR
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                
 
                 
-                    <a rel="next" href="object-store-comparison.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="oauth.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
