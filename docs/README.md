@@ -1,5 +1,7 @@
-# About
 
+![notes logo](images/314c8e04-3244-4523-8731-6d8bd6aefdad_200x200.png)
+
+# About
 General notes about things I learn daily. 
 
 Notes need not explain complete topic as whole but those are basically collection of facts I need to know when I refer to the title topic. At some places I have collected my unserstanding of the topic or new learnig in that area. Or some rare facts I had understood about the topic though my experience which might not be required in minimum knowledge of that topic. At some place, it have some content copied as it is from the refences as listed in end of documents. 
