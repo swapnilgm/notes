@@ -1,6 +1,7 @@
 # Summary
 
-[Introduction](README.md)
+[About](README.md)
+
 ---
 
 # Protocals
@@ -8,3 +9,7 @@
 
 # Cloud Applications
 - [Object store comparision](object-store-comparison.md)
+- [Volume resizing feature comparision](cloud-volume-resizing.md)
+
+---
+[Apache License 2.0]()
