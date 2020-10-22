@@ -18,8 +18,6 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
-        
         
         <link rel="shortcut icon" href="favicon.png">
         
@@ -95,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html" class="active"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocols</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html" class="active"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,7 +164,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#cloud-based-object-store-comparison" id="cloud-based-object-store-comparison">Cloud based object store comparison</a></h1>
-<!-- toc -->
+<ul>
+<li><a href="#limitations-comparison-table">Limitations comparison table</a></li>
+<li><a href="#azure-blob-storage-abs">Azure Blob Storage (ABS)</a></li>
+<li><a href="#aws-s3">AWS S3</a></li>
+<li><a href="#references">References</a></li>
+</ul>
 <h2><a class="header" href="#limitations-comparison-table" id="limitations-comparison-table">Limitations comparison table</a></h2>
 <table><thead><tr><th>Resource</th><th>AWS</th><th>ABS</th><th>Swift</th><th>GCS</th><th>Alicloud</th></tr></thead><tbody>
 <tr><td>bucket name length</td><td>3-63 char</td><td>resourcegrp 1-90char, storage-account 3-24char, container 3-63char</td><td>256 bytes</td><td>3-64 char, no goole prefix or mispell</td><td>3-63  char</td></tr>
@@ -178,6 +181,7 @@
 <tr><td>Max Object size</td><td>5 TB</td><td>4.75 TB</td><td>5 GB</td><td>5 TB</td><td>5 GB, 48GB with multipart</td></tr>
 <tr><td>Chunk size</td><td>5MB to 5 GB</td><td>up to 100 MiB</td><td>up to 5 GB</td><td>-</td><td>5GB</td></tr>
 <tr><td>Max no. of Chunks</td><td>10,000</td><td>50,000</td><td>1,000</td><td>32<sup>x</sup></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>Writes per object</td><td></td><td></td><td></td><td>once per second</td><td></td></tr>
 <tr><td>Writes per bucket</td><td></td><td>20000 per second request per account</td><td></td><td>no limits</td><td></td></tr>
 <tr><td>HTTP Compression</td><td>[No</td><td>(https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)</td><td><a href="https://docs.microsoft.com/en-us/rest/api/storageservices/put-blob">No</a></td><td></td><td><a href="https://cloud.google.com/storage/docs/transcoding">yes</a></td></tr>

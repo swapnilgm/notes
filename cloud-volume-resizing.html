@@ -18,8 +18,6 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
-        
         
         <link rel="shortcut icon" href="favicon.png">
         
@@ -95,7 +93,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocals</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html" class="active"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocols</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html" class="active"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,7 +164,21 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#cloud-based-volume-resizing" id="cloud-based-volume-resizing">Cloud based volume resizing</a></h1>
-<!-- toc -->
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#aws-ebs">AWS-EBS</a>
+<ul>
+<li><a href="#elastic-volumes-are-supported-on-the-following-instances">Elastic Volumes are supported on the following instances:</a></li>
+<li><a href="#monitoring">Monitoring</a></li>
+<li><a href="#limitation">Limitation</a></li>
+</ul>
+</li>
+<li><a href="#gce-pd">GCE-PD</a></li>
+<li><a href="#azure-disk">Azure disk</a></li>
+<li><a href="#kubernetes-volume-resize">Kubernetes volume resize</a></li>
+<li><a href="#alicloud">Alicloud</a></li>
+<li><a href="#references">References</a></li>
+</ul>
 <h2><a class="header" href="#abstract" id="abstract">Abstract</a></h2>
 <p>This documents captures the volume i.e. disk storage resizing feature on major cloud providers</p>
 <table><thead><tr><th></th><th>AWS-EBS</th><th>GCE-PD</th><th>Azure disks</th><th>Cinder</th><th>Alicloud</th></tr></thead><tbody>
