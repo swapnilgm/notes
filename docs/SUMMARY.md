@@ -4,7 +4,7 @@
 
 ---
 
-# Protocals
+## Protocols
 - [OAuth 2.0](oauth.md)
 
 # Cloud Applications
@@ -12,4 +12,6 @@
 - [Volume resizing feature comparision](cloud-volume-resizing.md)
 
 ---
+
 [Apache License 2.0]()
+
