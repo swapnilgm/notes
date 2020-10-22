@@ -27,12 +27,12 @@ jobs:
           arch=$(uname -m)
           mdbookversion=v0.4.3
           mdbooktocversion=0.5.1
-          echo $PATH
-          curl -LsSf https://github.com/rust-lang/mdBook/releases/download/${mdbookversion}/mdbook-${mdbookversion}-${arch}-unknown-linux-gnu.tar.gz | tar -xz -C /usr/local/bin
-          curl -LsSf https://github.com/badboy/mdbook-toc/releases/download/${mdbooktocversion}/mdbook-toc-${mdbooktocversion}-${arch}-unknown-linux-gnu.tar.gz | tar -xz -C /usr/local/bin
+          curl -LsSf https://github.com/rust-lang/mdBook/releases/download/${mdbookversion}/mdbook-${mdbookversion}-${arch}-unknown-linux-gnu.tar.gz | tar -xz
+          curl -LsSf https://github.com/badboy/mdbook-toc/releases/download/${mdbooktocversion}/mdbook-toc-${mdbooktocversion}-${arch}-unknown-linux-gnu.tar.gz | tar -xz
       - name: Deploy docs
         run: |
-          mdbook build .
+          export PATH=`pwd`:$PATH
+          ./mdbook build .
           git fetch origin gh-pages
           git worktree add /tmp/book gh-pages
           rm -rf /tmp/book/*

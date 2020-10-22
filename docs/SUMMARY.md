@@ -4,7 +4,7 @@
 
 ---
 
-## Protocols
+# Protocols
 - [OAuth 2.0](oauth.md)
 
 # Cloud Applications
