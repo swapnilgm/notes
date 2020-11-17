@@ -10,7 +10,7 @@
 # Cloud Applications
 - [Object store comparision](object-store-comparison.md)
 - [Volume resizing feature comparision](cloud-volume-resizing.md)
-
+- [HAProxy](haproxy.md)
 ---
 
 [Apache License 2.0]()
