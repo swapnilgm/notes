@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocols</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Protocols</li><li class="chapter-item expanded "><a href="oauth.html"><strong aria-hidden="true">1.</strong> OAuth 2.0</a></li><li class="chapter-item expanded affix "><li class="part-title">Cloud Applications</li><li class="chapter-item expanded "><a href="object-store-comparison.html"><strong aria-hidden="true">2.</strong> Object store comparision</a></li><li class="chapter-item expanded "><a href="cloud-volume-resizing.html"><strong aria-hidden="true">3.</strong> Volume resizing feature comparision</a></li><li class="chapter-item expanded "><a href="haproxy.html"><strong aria-hidden="true">4.</strong> HAProxy</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><div>Apache License 2.0</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -535,6 +535,67 @@ graph LR
 <li><a href="https://docs.openstack.org/cinder/latest/cli/cli-manage-volumes.html#resize-a-volume">Resize cinder volume</a></li>
 <li><a href="https://www.alibabacloud.com/help/doc-detail/25452.htm?spm=a2c63.p38356.879954.8.78ae534bhdbtGJ#concept-z11-xsh-ydb">Resize alicloud data disks</a></li>
 <li><a href="https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/">Kubernetes persistent volume resizing</a></li>
+</ul>
+<h1><a class="header" href="#haproxy---high-availablibility-proxy" id="haproxy---high-availablibility-proxy">HAProxy - High Availablibility Proxy</a></h1>
+<ul>
+<li>
+<p><a href="haproxy.html#terminology">Terminology</a></p>
+</li>
+<li>
+<p><a href="haproxy.html#types-of-load-balancing">Types of Load balancing</a></p>
+</li>
+<li>
+<p><a href="haproxy.html#loadbalancing-algorithm">Loadbalancing algorithm</a></p>
+</li>
+<li>
+<p><a href="haproxy.html#helath-check">Helath check</a></p>
+</li>
+<li>
+<p>TCP (Layer 4) proxy</p>
+</li>
+<li>
+<p>HTTP (Layer 7) proxy</p>
+</li>
+</ul>
+<h2><a class="header" href="#terminology-1" id="terminology-1">Terminology</a></h2>
+<ul>
+<li>ACL (Access Control Lists)
+<ul>
+<li>Condition or rules for traffic flow</li>
+<li>e.g. acl books path_beg /book</li>
+</ul>
+</li>
+<li>Frontends
+<ul>
+<li>Fonrtend bind to one or more ports</li>
+<li>e.g. Frontend-http binds 80
+Frontend-http binds 443 </li>
+<li>TLS alpn support </li>
+</ul>
+</li>
+<li>Backends
+<ul>
+<li>Mutiple backend</li>
+<li>TLS passthrough</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#types-of-load-balancing" id="types-of-load-balancing">Types of Load balancing</a></h2>
+<ul>
+<li>no load balancing</li>
+<li>Layer 4: TCP</li>
+<li>Layer 7: http</li>
+</ul>
+<h2><a class="header" href="#loadbalancing-algorithm" id="loadbalancing-algorithm">Loadbalancing algorithm</a></h2>
+<ul>
+<li>roundrobin</li>
+<li>leastconn</li>
+<li>source</li>
+</ul>
+<h2><a class="header" href="#helath-check" id="helath-check">Helath check</a></h2>
+<ul>
+<li>Periodic backend server health check</li>
+<li>auto-removal of unhealthy backend</li>
 </ul>
 
                     </main>
